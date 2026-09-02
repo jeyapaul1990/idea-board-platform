@@ -1,0 +1,9 @@
+# Copy to backend.tf and set your state bucket before first apply.
+# One bucket can serve all clouds with different prefixes.
+
+terraform {
+  backend "gcs" {
+    bucket = "YOUR-TF-STATE-BUCKET"
+    prefix = "10-cloud/gcp"
+  }
+}

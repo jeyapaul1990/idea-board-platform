@@ -1,0 +1,6 @@
+cloud          = "gcp"
+environment    = "demo"
+name_prefix    = "idea-board"
+gcp_project_id = "idea-board-platform"
+gcp_region     = "asia-south1"
+gcp_zone       = "asia-south1-a"

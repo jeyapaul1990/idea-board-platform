@@ -1,0 +1,7 @@
+# Copy to docker-compose.override.yml to rehearse the AI 2 rollback demo.
+# /readyz returns 503 → Kubernetes readiness probe fails → sentinel rolls back.
+
+services:
+  backend:
+    environment:
+      FORCE_READINESS_FAIL: "1"

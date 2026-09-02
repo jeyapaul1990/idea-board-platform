@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+*.local
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+backend.tf
+*.override.tf
+*.override.tf.json
+docker-compose.override.yml
+
+# Secrets / local
+*.pem
+service-account*.json

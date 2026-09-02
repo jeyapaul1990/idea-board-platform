@@ -1,0 +1,5 @@
+cloud                     = "azure"
+environment               = "demo"
+name_prefix               = "idea-board"
+azure_location            = "centralindia"
+azure_resource_group_name = ""
