@@ -5,6 +5,7 @@ provider "google" {
 
 provider "azurerm" {
   features {}
+  # Set before terraform: $env:ARM_SUBSCRIPTION_ID = (az account show --query id -o tsv)
 }
 
 provider "aws" {

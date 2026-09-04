@@ -1,9 +1,8 @@
-# Copy to backend.tf and set your state bucket before first apply.
-# One bucket can serve all clouds with different prefixes.
-
 terraform {
+  # Prefer: terraform init -reconfigure -backend-config=backends/<gcp|azure>.hcl
+  # Default left as GCP so existing local checkouts keep working until you switch.
   backend "gcs" {
-    bucket = "YOUR-TF-STATE-BUCKET"
+    bucket = "idea-board-platform-tfstate"
     prefix = "10-cloud/gcp"
   }
 }

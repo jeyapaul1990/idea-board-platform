@@ -98,8 +98,11 @@ resource "google_container_cluster" "primary" {
   name     = "${local.name}-gke"
   location = var.zone
 
+  # Demo environments need an easy destroy after the video.
+  deletion_protection = false
+
   remove_default_node_pool = true
-  initial_node_count     = 1
+  initial_node_count       = 1
 
   network    = google_compute_network.vpc.name
   subnetwork = google_compute_subnetwork.primary.name
@@ -144,13 +147,17 @@ resource "google_container_node_pool" "primary" {
 }
 
 resource "google_sql_database_instance" "postgres" {
-  project          = var.project_id
-  name             = "${local.name}-sql"
-  database_version = "POSTGRES_16"
-  region           = var.region
+  project             = var.project_id
+  name                = "${local.name}-sql"
+  database_version    = "POSTGRES_16"
+  region              = var.region
+  deletion_protection = false
 
   settings {
-    tier = "db-f1-micro"
+    # ENTERPRISE required for shared-core tiers like db-f1-micro.
+    # Default ENTERPRISE_PLUS rejects db-f1-micro.
+    edition = "ENTERPRISE"
+    tier    = "db-f1-micro"
 
     ip_configuration {
       ipv4_enabled    = false

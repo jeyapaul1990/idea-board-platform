@@ -1,0 +1,121 @@
+name: Deploy Health Sentinel
+
+# Post-deploy watchdog. Deterministic SLO checks first; optional LLM summary.
+# Demo: set demo_bad_deploy=true to force /readyz 503, then auto rollout undo.
+
+on:
+  workflow_dispatch:
+    inputs:
+      cloud:
+        description: Target cluster
+        required: true
+        type: choice
+        options:
+          - gcp
+          - azure
+        default: gcp
+      demo_bad_deploy:
+        description: Intentionally break readiness (FORCE_READINESS_FAIL=1) then let sentinel rollback
+        required: true
+        type: boolean
+        default: false
+      namespace:
+        description: Kubernetes namespace
+        required: true
+        type: string
+        default: idea-board-demo
+      deployment:
+        description: Deployment name to watch
+        required: true
+        type: string
+        default: backend
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  NAMESPACE: ${{ inputs.namespace }}
+  DEPLOYMENT: ${{ inputs.deployment }}
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to GKE
+        if: inputs.cloud == 'gcp'
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Get GKE credentials
+        if: inputs.cloud == 'gcp'
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: idea-board-demo-gke
+          location: asia-south1-a
+          project_id: idea-board-platform
+
+      - name: Authenticate to Azure
+        if: inputs.cloud == 'azure'
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get AKS credentials
+        if: inputs.cloud == 'azure'
+        uses: azure/aks-set-context@v4
+        with:
+          resource-group: idea-board-demo-rg
+          cluster-name: idea-board-demo-aks
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Snapshot current revision
+        run: |
+          REV=$(kubectl get deployment "$DEPLOYMENT" -n "$NAMESPACE" -o jsonpath='{.metadata.annotations.deployment\.kubernetes\.io/revision}')
+          echo "Current revision: ${REV}"
+
+      - name: Trigger bad deploy (demo)
+        if: ${{ inputs.demo_bad_deploy }}
+        run: |
+          echo "Setting FORCE_READINESS_FAIL=1 on ${DEPLOYMENT}"
+          kubectl set env "deployment/${DEPLOYMENT}" -n "$NAMESPACE" FORCE_READINESS_FAIL=1
+          # RollingUpdate keeps old Ready pods; delete so failure is visible.
+          kubectl delete pods -n "$NAMESPACE" -l "app=${DEPLOYMENT}" --wait=false
+          sleep 20
+          kubectl get pods -n "$NAMESPACE" -l "app=${DEPLOYMENT}" || true
+
+      - name: Ensure healthy flag (normal path)
+        if: ${{ !inputs.demo_bad_deploy }}
+        run: |
+          kubectl set env "deployment/${DEPLOYMENT}" -n "$NAMESPACE" FORCE_READINESS_FAIL=0
+          kubectl rollout status "deployment/${DEPLOYMENT}" -n "$NAMESPACE" --timeout=180s
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Health Sentinel
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          python scripts/health_sentinel.py \
+            --namespace "$NAMESPACE" \
+            --deployment "$DEPLOYMENT" \
+            --wait-seconds 90 \
+            --max-restarts 3 \
+            --undo
+
+      - name: Reset demo flag after rollback
+        if: ${{ always() && inputs.demo_bad_deploy }}
+        run: |
+          kubectl set env "deployment/${DEPLOYMENT}" -n "$NAMESPACE" FORCE_READINESS_FAIL=0 || true
+          kubectl rollout status "deployment/${DEPLOYMENT}" -n "$NAMESPACE" --timeout=180s || true
+          kubectl get pods -n "$NAMESPACE" -l "app=${DEPLOYMENT}"

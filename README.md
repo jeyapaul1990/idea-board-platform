@@ -44,7 +44,7 @@ infra/10-cloud/modules/
 
 ## Demo hooks (for later video)
 
-**Bad deploy / rollback demo (AI 2):** set `FORCE_READINESS_FAIL=1` on the backend service. `/readyz` returns 503.
+**Bad deploy / rollback demo (AI 2 — Health Sentinel):** set `FORCE_READINESS_FAIL=1` on the backend service. `/readyz` returns 503. The sentinel detects Not Ready pods and runs `kubectl rollout undo`.
 
 ```yaml
 # docker-compose.override.yml (do not commit for normal use)
@@ -52,6 +52,14 @@ services:
   backend:
     environment:
       FORCE_READINESS_FAIL: "1"
+```
+
+**CI demo:** GitHub → Actions → **Deploy Health Sentinel** → Run workflow with `demo_bad_deploy=true` (needs `GCP_SA_KEY` or `AZURE_CREDENTIALS`; see [`.github/README.md`](.github/README.md)).
+
+**Local demo:**
+
+```bash
+bash scripts/demo-health-sentinel.sh
 ```
 
 **Risky migration demo (AI 1):** copy `apps/backend/demo/demo_drop_content_column.py` into `alembic/versions/` on branch `demo/risky-migration`. Do not apply on `main`.
@@ -63,6 +71,7 @@ apps/backend/          FastAPI + Alembic + Postgres
 apps/frontend/         React + Vite, nginx in production
 infra/10-cloud/        Stage 1 — reusable cloud modules
 infra/20-platform/     Stage 2 — cloud-agnostic Kubernetes
-scripts/               kubeconfig.sh, resolve-db-password.sh
+scripts/               kubeconfig, resolve-db-password, health_sentinel
+.github/workflows/     CI (GHCR) + Deploy Health Sentinel
 docker-compose.yml
 ```

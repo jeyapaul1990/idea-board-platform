@@ -9,15 +9,19 @@ output "contract" {
     cluster: name, endpoint, ca_certificate
     database: host, port, name, username, secret_ref (NOT the password value)
   EOT
-  value       = local.contract
+  # Azure kube_config fields are provider-sensitive; GCP path stays safe either way.
+  value     = local.contract
+  sensitive = true
 }
 
 output "cluster" {
   description = "Kubernetes cluster connection info."
   value       = local.contract.cluster
+  sensitive   = true
 }
 
 output "database" {
   description = "Database connection info (password resolved via secret_ref at deploy time)."
   value       = local.contract.database
+  sensitive   = true
 }

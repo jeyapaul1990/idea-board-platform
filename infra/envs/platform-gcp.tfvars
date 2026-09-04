@@ -1,9 +1,9 @@
-cloud       = "gcp"
-environment = "demo"
-state_bucket = "YOUR-TF-STATE-BUCKET"
+cloud        = "gcp"
+environment  = "demo"
+state_bucket = "idea-board-platform-tfstate"
 
-backend_image  = "ghcr.io/YOUR_GITHUB_USER/idea-board-backend:latest"
-frontend_image = "ghcr.io/YOUR_GITHUB_USER/idea-board-frontend:latest"
+backend_image  = "ghcr.io/jeyapaul1990/idea-board-backend:latest"
+frontend_image = "ghcr.io/jeyapaul1990/idea-board-frontend:latest"
 
 backend_replicas  = 1
 frontend_replicas = 1
