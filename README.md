@@ -19,6 +19,8 @@ Outmarket DevOps case study: a small Idea Board app deployed through **cloud-agn
 
 *Figure: Idea Board on a shared Stage 2 platform; GCP / Azure / AWS modules plug in via the same contract. CI builds to GHCR; the Health Sentinel watches post-deploy health.*
 
+Source (editable): [`docs/architecture.drawio`](docs/architecture.drawio) — open in [diagrams.net](https://app.diagrams.net/). After edits, **File → Export as → PNG** and replace `docs/architecture.png`.
+
 ```mermaid
 flowchart TB
   VAR["cloud = gcp | azure | aws<br/>one tfvars switch"]
@@ -133,8 +135,6 @@ Secrets (see **[.github/README.md](.github/README.md)**):
 | `AZURE_CREDENTIALS` | AKS sentinel / optional Azure deploy |
 | `GEMINI_API_KEY` | Optional LLM incident prose |
 
-Demo video recording checklist: **[docs/DEMO_VIDEO.md](docs/DEMO_VIDEO.md)**.
-
 ### Deploy cloud substrate (Stage 1)
 
 Separate remote-state prefixes per cloud (`infra/*/backends/*.hcl`) so GCP and Azure never share one state.
@@ -242,7 +242,7 @@ infra/10-cloud/               Stage 1 cloud modules + backends/
 infra/20-platform/            Stage 2 Kubernetes
 infra/envs/                   gcp / azure / aws / platform tfvars
 scripts/                      kubeconfig, resolve-db-password, health_sentinel
-docs/                         architecture.png, DEMO_VIDEO.md
+docs/                         architecture.png, architecture.drawio
 .github/workflows/            CI/CD (test, Trivy, deploy) + Health Sentinel demo
 docker-compose.yml
 ```
