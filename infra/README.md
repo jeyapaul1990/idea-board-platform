@@ -10,14 +10,15 @@ infra/
 │   ├── main.tf               #   picks module by var.cloud
 │   └── modules/
 │       ├── cloud-gcp/        #   GKE + Cloud SQL + VPC + Secret Manager
-│       ├── cloud-azure/      #   same contract (full resources in Phase 3)
+│       ├── cloud-azure/      #   AKS + Flexible Server + Key Vault (live)
 │       └── cloud-aws/        #   same contract (plan-clean, no apply)
 ├── 20-platform/              # Stage 2 — ZERO cloud providers (kubernetes only)
 └── envs/
     ├── gcp.tfvars            #   cloud = "gcp"
     ├── azure.tfvars
     ├── aws.tfvars
-    └── platform-gcp.tfvars
+    ├── platform-gcp.tfvars
+    └── platform-azure.tfvars
 ```
 
 ## The contract (every cloud module emits this)

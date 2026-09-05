@@ -4,19 +4,21 @@
 
 | Workflow | Trigger | Purpose |
 | --- | --- | --- |
-| `ci.yml` | push / PR | Backend import check; build & push images to GHCR |
-| `deploy-health-sentinel.yml` | `workflow_dispatch` | Cluster auth → optional bad deploy → **Health Sentinel** → rollback |
+| `ci.yml` (**CI/CD**) | push / PR | pytest → build → **Trivy (CRITICAL)** → push GHCR → on **`main`**: deploy GKE + Health Sentinel |
+| `deploy-health-sentinel.yml` | `workflow_dispatch` | Manual/demo sentinel (incl. bad-deploy rollback) |
 
 ## Required secrets
 
 | Secret | Used by | How to create |
 | --- | --- | --- |
-| `GCP_SA_KEY` | GCP path | JSON key for a SA with `container.developer` (or GKE Admin) on `idea-board-platform` |
+| `GCP_SA_KEY` | GKE deploy + sentinel | JSON key for a SA with `container.developer` on `idea-board-platform` |
 | `AZURE_CREDENTIALS` | Azure path | Output of `az ad sp create-for-rbac --sdk-auth` with AKS access |
 | `GEMINI_API_KEY` | Optional | [Google AI Studio](https://aistudio.google.com/apikey) — LLM incident summary |
 | `OPENAI_API_KEY` | Optional | Fallback if Gemini unset |
 
 Without an LLM key the sentinel still decides and rolls back; it only skips the prose summary.
+
+**Trivy** is open source ([Aqua Trivy](https://github.com/aquasecurity/trivy), Apache-2.0). The workflow fails the job on **CRITICAL** findings (`ignore-unfixed: true`).
 
 ## Demo B — bad deploy + auto rollback
 
