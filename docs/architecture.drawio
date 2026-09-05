@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-09-01T00:05:00.000Z" agent="idea-board-platform" version="24.7.17">
+  <diagram id="idea-board-v3" name="Idea Board — Cloud-Agnostic AI DevOps Platform">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1900" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        
+
+        <mxCell id="bg1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f9fb;strokeColor=#a8adb5;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="2540" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="title1" value="LAYER 1 — SOURCE AND PIPELINE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9ecef;strokeColor=#a8adb5;strokeWidth=1;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="2540" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bg2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#a8adb5;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="480" width="2540" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="title2" value="LAYER 2 — ARTIFACT REGISTRY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9ecef;strokeColor=#a8adb5;strokeWidth=1;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="30" y="480" width="2540" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bg3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f9fb;strokeColor=#a8adb5;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="645" width="2540" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="title3" value="LAYER 3 — TERRAFORM STAGE 1 — CLOUD-SPECIFIC IMPLEMENTATION ONLY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9ecef;strokeColor=#a8adb5;strokeWidth=1;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="30" y="645" width="2540" height="38" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="contract" value="&lt;div style=&quot;font-size:24px;font-weight:bold&quot;&gt;THE CONTRACT&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:5px&quot;&gt;every cloud module emits this identical shape&lt;/div&gt;&lt;div style=&quot;font-size:19px;margin-top:20px&quot;&gt;&lt;b&gt;cluster:&lt;/b&gt; name, endpoint, ca_certificate&lt;/div&gt;&lt;div style=&quot;font-size:19px;margin-top:9px&quot;&gt;&lt;b&gt;database:&lt;/b&gt; host, port, name, username, secret_ref&lt;/div&gt;&lt;div style=&quot;font-size:13px;margin-top:20px&quot;&gt;adding a fourth cloud means implementing this contract and changing nothing above it&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4c2;strokeColor=#d0a800;strokeWidth=4;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="930" width="2010" height="215" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bg5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f9fb;strokeColor=#a8adb5;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1165" width="2540" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="title5" value="LAYER 5 — TERRAFORM STAGE 2 AND RUNTIME" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e9ecef;strokeColor=#a8adb5;strokeWidth=1;fontStyle=1;fontSize=15;align=left;verticalAlign=middle;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1165" width="2540" height="38" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="repo" value="&lt;b&gt;GitHub Repository&lt;/b&gt;&lt;br&gt;Single codebase&lt;br&gt;Single pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24292f;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="95" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="actions" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;CI/CD + cluster auth&lt;br&gt;&lt;span style=&quot;font-size:10px;color:#555&quot;&gt;GCP_SA_KEY (demo)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24292f;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="270" y="92" width="205" height="86" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lint" value="&lt;b&gt;pytest&lt;/b&gt;&lt;br&gt;API tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="505" y="100" width="120" height="65" as="geometry" /></mxCell>
+        <mxCell id="build" value="&lt;b&gt;Docker&lt;br&gt;Build&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="650" y="100" width="120" height="65" as="geometry" /></mxCell>
+        <mxCell id="trivy" value="&lt;b&gt;Trivy&lt;/b&gt;&lt;br&gt;Image Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="795" y="100" width="120" height="65" as="geometry" /></mxCell>
+        <mxCell id="plan" value="&lt;b&gt;Terraform plan&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:9px&quot;&gt;(manual / future CI)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="940" y="100" width="125" height="65" as="geometry" /></mxCell>
+        <mxCell id="approval" value="&lt;b&gt;HUMAN APPROVAL&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:9px&quot;&gt;(optional / future)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4cc;strokeColor=#c59b00;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1090" y="100" width="135" height="65" as="geometry" /></mxCell>
+        <mxCell id="apply" value="&lt;b&gt;Deploy&lt;/b&gt;&lt;br&gt;kubectl set image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1250" y="100" width="125" height="65" as="geometry" /></mxCell>
+        <mxCell id="verify" value="&lt;b&gt;Post-Deploy&lt;/b&gt;&lt;br&gt;Verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6b7280;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1400" y="100" width="140" height="65" as="geometry" /></mxCell>
+        <mxCell id="deliveryNote" value="CLOUD-INDEPENDENT DELIVERY LOGIC" style="rounded=0;html=1;fillColor=none;strokeColor=none;fontStyle=1;fontSize=11;fontColor=#6b7280;" vertex="1" parent="1"><mxGeometry x="1900" y="100" width="450" height="30" as="geometry" /></mxCell>
+
+        
+        <mxCell id="aiGroup" value="AI — AI proposes, deterministic systems decide" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef2ff;strokeColor=#6366f1;strokeWidth=2;fontStyle=1;fontSize=13;align=left;verticalAlign=top;spacingTop=8;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="205" width="1650" height="235" as="geometry" />
+        </mxCell>
+        <mxCell id="ai1" value="&lt;b&gt;AI 1: Release Risk Analyst&lt;/b&gt; &lt;span style=&quot;color:#b91c1c&quot;&gt;(planned)&lt;/span&gt;&lt;br&gt;&lt;br&gt;Reads Terraform plan JSON + code diff&lt;br&gt;Writes risk comment on Pull Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#4f46e5;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="530" y="255" width="380" height="120" as="geometry" /></mxCell>
+        <mxCell id="ai2" value="&lt;b&gt;AI 2: Deployment Health Sentinel&lt;/b&gt; &lt;span style=&quot;color:#15803d&quot;&gt;(live)&lt;/span&gt;&lt;br&gt;&lt;br&gt;Reads pod phases, restart counts, probe results, error logs&lt;br&gt;&lt;br&gt;Deterministic SLOs decide · can trigger &lt;b&gt;kubectl rollout undo&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#4f46e5;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="940" y="245" width="450" height="140" as="geometry" /></mxCell>
+        <mxCell id="ai3" value="&lt;b&gt;AI 3: Environment Sizer&lt;/b&gt; &lt;span style=&quot;color:#b91c1c&quot;&gt;(planned)&lt;/span&gt;&lt;br&gt;&lt;br&gt;Plain-language environment.yaml → replica counts, HPA thresholds, node types and DB tier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#4f46e5;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1420" y="255" width="440" height="120" as="geometry" /></mxCell>
+        <mxCell id="slo" value="&lt;b&gt;DETERMINISTIC SLO THRESHOLDS FIRST&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px&quot;&gt;AI recommendation is not trusted directly&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=2;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1010" y="395" width="270" height="45" as="geometry" /></mxCell>
+
+        
+        <mxCell id="p1" value="source" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=1.5;" edge="1" parent="1" source="repo" target="actions"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p2" value="trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="actions" target="lint"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p3" value="pass" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="lint" target="build"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p4" value="image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="build" target="trivy"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p5" value="scan passed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="trivy" target="plan"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p6" value="review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="plan" target="approval"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p7" value="approved" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="approval" target="apply"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p8" value="deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="apply" target="verify"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="ai1in" value="plan JSON + code diff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4f46e5;endArrow=block;fontSize=9;" edge="1" parent="1" source="plan" target="ai1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ai1out" value="risk comment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4f46e5;endArrow=block;fontSize=9;" edge="1" parent="1" source="ai1" target="approval"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ai2in" value="health signals" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4f46e5;endArrow=block;fontSize=9;" edge="1" parent="1" source="verify" target="ai2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ai2out" value="proposed rollback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#4f46e5;endArrow=block;fontSize=9;" edge="1" parent="1" source="ai2" target="slo"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="sloOut" value="SLO breach → kubectl rollout undo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#dc2626;endArrow=block;fontSize=9;" edge="1" parent="1" source="slo" target="verify"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="ghcr" value="&lt;b&gt;GitHub Container Registry&lt;/b&gt;&lt;br&gt;&lt;b&gt;ghcr.io&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:11px&quot;&gt;one image digest, deployed unchanged to every cloud — no per-cloud registry duplication&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24292f;strokeWidth=2;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="700" y="535" width="980" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="registryEdge" value="push immutable image digest" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="build" target="ghcr"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="cloudInput" value="&lt;b&gt;Input Variable&lt;/b&gt;&lt;br&gt;&lt;br&gt;cloud = gcp | azure | aws" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4cc;strokeColor=#c59b00;strokeWidth=2;fontSize=12;" vertex="1" parent="1"><mxGeometry x="70" y="750" width="245" height="85" as="geometry" /></mxCell>
+        <mxCell id="gcpMod" value="&lt;b&gt;cloud-gcp&lt;/b&gt;&lt;br&gt;&lt;br&gt;GKE&lt;br&gt;Cloud SQL for PostgreSQL&lt;br&gt;VPC + firewall rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;strokeWidth=2;fontSize=12;" vertex="1" parent="1"><mxGeometry x="430" y="720" width="420" height="145" as="geometry" /></mxCell>
+        <mxCell id="azMod" value="&lt;b&gt;cloud-azure&lt;/b&gt;&lt;br&gt;&lt;br&gt;AKS&lt;br&gt;PostgreSQL Flexible Server&lt;br&gt;VNet + NSG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0078d4;strokeWidth=2;fontSize=12;" vertex="1" parent="1"><mxGeometry x="910" y="720" width="420" height="145" as="geometry" /></mxCell>
+        <mxCell id="awsMod" value="&lt;b&gt;cloud-aws&lt;/b&gt;&lt;br&gt;&lt;br&gt;EKS&lt;br&gt;RDS&lt;br&gt;VPC + security groups&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color:#b91c1c;font-weight:bold&quot;&gt;CONTRACT STUB / PLAN-ORIENTED&lt;br&gt;not applied&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffffff;strokeColor=#ff9900;strokeWidth=2;fontSize=12;" vertex="1" parent="1"><mxGeometry x="1390" y="710" width="440" height="165" as="geometry" /></mxCell>
+        <mxCell id="inGcp" value="select" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="cloudInput" target="gcpMod"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="inAz" value="select" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="cloudInput" target="azMod"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="inAws" value="select" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="cloudInput" target="awsMod"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="cg" value="contract output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=2;fontSize=9;" edge="1" parent="1" source="gcpMod" target="contract"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca" value="contract output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=2;fontSize=9;" edge="1" parent="1" source="azMod" target="contract"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cw" value="contract output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=2;fontSize=9;" edge="1" parent="1" source="awsMod" target="contract"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="seam" value="&lt;b&gt;THE HONEST SEAM&lt;/b&gt;&lt;br&gt;&lt;br&gt;scripts/kubeconfig.sh — the single cloud-aware seam, ~15 lines&lt;br&gt;&lt;br&gt;gcloud container clusters get-credentials&lt;br&gt;| az aks get-credentials&lt;br&gt;| aws eks update-kubeconfig" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#dc2626;strokeWidth=2;fontSize=10;" vertex="1" parent="1"><mxGeometry x="2190" y="900" width="335" height="230" as="geometry" /></mxCell>
+        <mxCell id="seamEdge" value="cloud-aware boundary" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#dc2626;endArrow=block;fontSize=9;" edge="1" parent="1" source="seam" target="contract"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="stage2" value="&lt;b&gt;TERRAFORM STAGE 2&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:17px&quot;&gt;ZERO cloud providers — kubernetes provider only&lt;br&gt;byte-identical on every cloud&lt;/span&gt;&lt;br&gt;&lt;br&gt;Namespace • Deployment • Service • Secret • NetworkPolicy • LoadBalancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#374151;strokeWidth=3;fontSize=12;" vertex="1" parent="1"><mxGeometry x="600" y="1210" width="1400" height="125" as="geometry" /></mxCell>
+        <mxCell id="contractToStage" value="identical contract consumed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeWidth=3;fontSize=9;" edge="1" parent="1" source="contract" target="stage2"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="gcpRuntime" value="&lt;b&gt;GCP RUNTIME&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;strokeWidth=2;fontSize=13;align=left;verticalAlign=top;spacingTop=8;spacingLeft=12;" vertex="1" parent="1"><mxGeometry x="70" y="1370" width="1190" height="405" as="geometry" /></mxCell>
+        <mxCell id="gcpLB" value="&lt;b&gt;Public Load Balancer&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;fontSize=11;" vertex="1" parent="1"><mxGeometry x="115" y="1495" width="180" height="70" as="geometry" /></mxCell>
+        <mxCell id="gke" value="&lt;b&gt;GKE CLUSTER&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Frontend Pods&lt;/b&gt; — nginx serving React&lt;br&gt;&lt;br&gt;&lt;b&gt;Backend Pods&lt;/b&gt; — FastAPI&lt;br&gt;&lt;br&gt;&lt;b&gt;/healthz&lt;/b&gt; — liveness, no dependencies&lt;br&gt;&lt;b&gt;/readyz&lt;/b&gt; — readiness, checks database&lt;br&gt;&lt;b&gt;/metrics&lt;/b&gt; — Prometheus format&lt;br&gt;(no Prometheus server)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef6ff;strokeColor=#4285f4;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="350" y="1430" width="560" height="275" as="geometry" /></mxCell>
+        <mxCell id="gcpDb" value="&lt;b&gt;Cloud SQL&lt;/b&gt;&lt;br&gt;PostgreSQL&lt;br&gt;&lt;br&gt;&lt;b&gt;PRIVATE IP — no public access&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4285f4;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="965" y="1490" width="245" height="115" as="geometry" /></mxCell>
+        <mxCell id="gcpTraffic" value="HTTP LoadBalancer traffic (demo)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="gcpLB" target="gke"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="gcpDbEdge" value="database connection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="gke" target="gcpDb"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        
+        <mxCell id="azRuntime" value="&lt;b&gt;AZURE RUNTIME&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0078d4;strokeWidth=2;fontSize=13;align=left;verticalAlign=top;spacingTop=8;spacingLeft=12;" vertex="1" parent="1"><mxGeometry x="1300" y="1370" width="1190" height="405" as="geometry" /></mxCell>
+        <mxCell id="azLB" value="&lt;b&gt;Public Load Balancer&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0078d4;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1345" y="1495" width="180" height="70" as="geometry" /></mxCell>
+        <mxCell id="aks" value="&lt;b&gt;AKS CLUSTER&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Frontend Pods&lt;/b&gt; — nginx serving React&lt;br&gt;&lt;br&gt;&lt;b&gt;Backend Pods&lt;/b&gt; — FastAPI&lt;br&gt;&lt;br&gt;&lt;b&gt;/healthz&lt;/b&gt; — liveness, no dependencies&lt;br&gt;&lt;b&gt;/readyz&lt;/b&gt; — readiness, checks database&lt;br&gt;&lt;b&gt;/metrics&lt;/b&gt; — Prometheus format&lt;br&gt;(no Prometheus server)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef8ff;strokeColor=#0078d4;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="1580" y="1430" width="560" height="275" as="geometry" /></mxCell>
+        <mxCell id="azDb" value="&lt;b&gt;PostgreSQL Flexible Server&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;PRIVATE IP — no public access&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0078d4;strokeWidth=2;fontSize=11;" vertex="1" parent="1"><mxGeometry x="2195" y="1490" width="250" height="115" as="geometry" /></mxCell>
+        <mxCell id="azTraffic" value="HTTP LoadBalancer traffic (demo)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="azLB" target="aks"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="azDbEdge" value="database connection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="aks" target="azDb"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="stageGcp" value="same Kubernetes manifests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="stage2" target="gke"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="stageAz" value="same Kubernetes manifests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="stage2" target="aks"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="pullGcp" value="image pull" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#6b7280;endArrow=block;fontSize=9;" edge="1" parent="1" source="ghcr" target="gke"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pullAz" value="image pull" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#6b7280;endArrow=block;fontSize=9;" edge="1" parent="1" source="ghcr" target="aks"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="2150" y="625" /><mxPoint x="2150" y="1395" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="appNote" value="CLOUD-INDEPENDENT APPLICATION DEPLOYMENT" style="rounded=0;html=1;fillColor=none;strokeColor=none;fontStyle=1;fontSize=11;fontColor=#6b7280;" vertex="1" parent="1"><mxGeometry x="2020" y="1210" width="430" height="30" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

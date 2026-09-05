@@ -28,7 +28,7 @@ flowchart TB
   subgraph S1["Stage 1 · infra/10-cloud · cloud-specific"]
     GCP["cloud-gcp<br/>GKE + Cloud SQL + VPC + Secret Manager"]
     AZ["cloud-azure<br/>AKS + Flexible Server + VNet + Key Vault"]
-    AWS["cloud-aws<br/>EKS + RDS · plan-clean, not applied"]
+    AWS["cloud-aws<br/>EKS + RDS · CONTRACT STUB / PLAN-ORIENTED, not applied"]
   end
 
   CONTRACT{{"Contract output<br/>cluster · database · secret_ref<br/>no plaintext DB password"}}
@@ -61,7 +61,7 @@ flowchart TB
 | --- | --- |
 | `/healthz` | Liveness — process up; **no** DB |
 | `/readyz` | Readiness — DB reachable (or forced fail via `FORCE_READINESS_FAIL`) |
-| `/metrics` | Prometheus metrics |
+| `/metrics` | Prometheus **text format** scrape endpoint (no Prometheus server in this demo) |
 
 That split avoids cascading restarts when the database blips, and gives the Health Sentinel real signals.
 
@@ -213,7 +213,7 @@ A green “apply/push” does not mean users are served. The sentinel closes tha
 | --- | --- |
 | **GCP** | Live — GKE + private Cloud SQL (primary; closest to a GKE-centric production stack) |
 | **Azure** | Live — AKS Free tier + PostgreSQL Flexible Server (private VNet) |
-| **AWS** | Module present for the same contract; **not applied** (EKS control-plane cost). Intended to stay **plan/validate-clean**, not a second paid cluster |
+| **AWS** | **Contract stub / plan-oriented** — module present for the same contract; **not applied** (EKS control-plane cost). Stays plan/validate-clean, not a second paid cluster |
 
 **Switching clouds:** change `cloud = "gcp" | "azure" | "aws"` in tfvars, use the matching backend prefix, fetch kubeconfig via `scripts/kubeconfig.sh`, apply Stage 2 with the same manifests.
 
@@ -229,7 +229,7 @@ A green “apply/push” does not mean users are served. The sentinel closes tha
 | POST | `/api/ideas` | Body: `{"content":"..."}` |
 | GET | `/healthz` | Liveness |
 | GET | `/readyz` | Readiness (DB) |
-| GET | `/metrics` | Prometheus |
+| GET | `/metrics` | Prometheus text format (no Prometheus server) |
 
 ---
 
