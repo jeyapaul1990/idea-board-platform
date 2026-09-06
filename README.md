@@ -127,7 +127,7 @@ CI runs the same `pytest` job on every push/PR (in-memory SQLite via dependency 
 
 **CD note:** Pushing to `main` rolls new image tags to the live GKE demo namespace, then runs the sentinel (undo on UNHEALTHY). Azure stays on the same images via GHCR; re-apply Stage 2 / `kubectl set image` there when you want AKS refreshed (or extend the workflow with `AZURE_CREDENTIALS`).
 
-Secrets (see **[.github/README.md](.github/README.md)**):
+Secrets (see **[docs/github-actions.md](docs/github-actions.md)**):
 
 | Secret | Required for |
 | --- | --- |
@@ -242,7 +242,7 @@ infra/10-cloud/               Stage 1 cloud modules + backends/
 infra/20-platform/            Stage 2 Kubernetes
 infra/envs/                   gcp / azure / aws / platform tfvars
 scripts/                      kubeconfig, resolve-db-password, health_sentinel
-docs/                         architecture.png, architecture.drawio
+docs/                         architecture.png, architecture.drawio, github-actions.md
 .github/workflows/            CI/CD (test, Trivy, deploy) + Health Sentinel demo
 docker-compose.yml
 ```
