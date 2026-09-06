@@ -65,11 +65,12 @@ flowchart TB
 
 That split avoids cascading restarts when the database blips, and gives the Health Sentinel real signals.
 
-**Security notes**
+**Security / platform notes**
 
 - Stage 1 stores DB passwords in Secret Manager / Key Vault and exposes only `secret_ref` in the contract.
 - Passwords are resolved at Stage 2 apply time (`scripts/resolve-db-password.sh`) and injected into a Kubernetes Secret — not written into Stage 1 outputs as plaintext.
 - The one cloud-aware seam for cluster login is `scripts/kubeconfig.sh` (`gcloud` / `az` / `aws`).
+- Workloads set **CPU/memory requests and limits** (scheduling + neighbor protection). **HPA** is omitted — no load generator in this demo.
 
 More deploy detail: **[infra/README.md](infra/README.md)**.
 
@@ -202,6 +203,7 @@ A green “apply/push” does not mean users are served. The sentinel closes tha
 | --- | --- |
 | Release Risk Analyst (PR comment on plan + risky Alembic) | Hook files under `apps/backend/demo/`; workflow not required for MVP |
 | Environment Sizer (NL → tfvars + policy) | Documented intent only |
+| HPA | Skipped — no traffic to scale against; fixed replicas via tfvars |
 
 ---
 

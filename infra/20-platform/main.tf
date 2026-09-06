@@ -75,6 +75,17 @@ resource "kubernetes_deployment" "backend" {
             value = "0"
           }
 
+          resources {
+            requests = {
+              cpu    = "100m"
+              memory = "128Mi"
+            }
+            limits = {
+              cpu    = "500m"
+              memory = "512Mi"
+            }
+          }
+
           liveness_probe {
             http_get {
               path = "/healthz"
@@ -155,6 +166,17 @@ resource "kubernetes_deployment" "frontend" {
           env {
             name  = "API_BASE_URL"
             value = ""
+          }
+
+          resources {
+            requests = {
+              cpu    = "50m"
+              memory = "64Mi"
+            }
+            limits = {
+              cpu    = "250m"
+              memory = "256Mi"
+            }
           }
         }
       }
